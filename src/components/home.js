@@ -2,7 +2,7 @@ import React from 'react'
 
 function Home() {
   return (
-    <div>NEWS WEBSITE</div>
+    <div>College Website</div>
   )
 }
 

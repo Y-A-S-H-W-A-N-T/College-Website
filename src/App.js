@@ -4,6 +4,8 @@ import AddNews from './components/addnews'
 import Display from './components/display'
 import MainNews from './components/mainnews'
 import News from './components/titles'
+import Quiz from './components/quiz'
+import Questions from './components/questions'
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route exact path='/news' element={<News/>}/>
           <Route exact path='/display' element={<Display/>}/>
           <Route exact path='/news/:id' element={<MainNews/>}/>
+          <Route exact path='/quiz' element={<Quiz/>}/>
+          <Route exact path='/questions/:id' element={<Questions/>}/>
         </Routes>
     </BrowserRouter>
   );
