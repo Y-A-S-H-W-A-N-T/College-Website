@@ -14,6 +14,7 @@ function Questions() {
     const [totalscore,setTotalscore] = useState(false)
     const [questions,setQuestions] = useState([{}])
     const [submit,setSubmit] = useState(false)
+    const [next,setNext] = useState(true)
     const [end,setEnd] = useState(false)
     const Database = collection(db,`Quiz/${id}/questions`)
     //fetching the questions
@@ -23,13 +24,13 @@ function Questions() {
           setQuestions(data.docs.map((doc)=>({...doc.data(),id: doc.id})))
         }
         getQuestions()
-        if(num+2 === questions.length)
+        if(num === questions.length-1)
         {
-          setSubmit(false)
+          setSubmit(true)
         }
         else
         {
-          setSubmit(true)
+          setSubmit(false)
         }
     },[setSubmit,Database,questions.length,num])
 
@@ -41,9 +42,9 @@ function Questions() {
         setScore(score+1)
       }
       setNum(num+1)
-      if(num === questions.length)
+      if(num+2 === questions.length)
       {
-        setSubmit(false)
+        setNext(false)
       }
     }
 
@@ -73,7 +74,7 @@ function Questions() {
         <br></br>
 
         <br></br>
-        {!submit && <button onClick={Next}>NEXT</button>}
+        {next && <button onClick={Next}>NEXT</button>}
 
         {submit && !end && <button onClick={SubmitTest}>SUBMIT</button>}
 
